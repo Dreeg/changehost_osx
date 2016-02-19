@@ -7,15 +7,12 @@ class Org
 
     def list
         count = 1
-        puts ""
-        puts "n   |   Org"
-        puts "-   |   ---"
+        puts 
+        puts 'n   |   Org'
+        puts '-   |   ---'
         @org.each do |o|
-            if count < 10
-                puts "#{count}   |   #{o}"
-            else
-                puts "#{count}  |   #{o}"
-            end
+            stringCount = "#{count}".ljust(4,' ')
+            puts "#{stringCount}|   #{o}"
             count += 1
         end
         puts ""
@@ -32,7 +29,7 @@ class Org
                 puts "Il record #{name} è stato aggiunto con successo"
             end
         else
-            print "Inserisci il nome: "
+            print 'Inserisci il nome: '
             name = STDIN.gets.chomp.downcase
             add(name)
         end
@@ -43,11 +40,11 @@ class Org
         print "Inserisci il numero corrispondente all'opzione: "
         num = STDIN.gets.chomp.to_i
         if num.between?(1,@org.length)
-            print "Inserisci il nuovo nome (o lascia vuoto per non modificare): "
+            print 'Inserisci il nuovo nome (o lascia vuoto per non modificare): '
             name = STDIN.gets.chomp
             old_name = @org[num-1]
             if (name.empty? || name == old_name)
-                puts "Il record non è stato cambiato" 
+                puts 'Il record non è stato cambiato'
             else
                 add(name)
                 transfer(name,old_name)
@@ -77,9 +74,54 @@ class Org
         $data['organizations']["#{org2}"] = $data['organizations']["#{org1}"]
     end
 
+    def add_selected(org=nil)
+        json = DataWriter.new
+        if org == nil
+            puts 'Le organizzazioni attualmente selezionate sono:'
+            $data['config']['organizations'].each do |o|
+                puts o
+            end
+            puts
+            puts ' --- '
+            org = select
+        end
+
+        if $data['config']['organizations'].include? org
+            puts "L'elenco delle organizzazioni selezionate include già #{org}"
+        elsif !@org.include? org
+            puts "#{org} non fa parte della lista di organizzazioni. Riprovare."
+            add_selected
+        else
+            $data['config']['organizations'].push(org)
+            json.update_json($data)
+            puts "#{org} aggiunta con successo all'elenco delle organizzazioni selezionate"
+        end
+    end
+
+    def remove_selected(org=nil)
+        json = DataWriter.new
+        if org == nil
+            puts 'Le organizzazioni attualmente selezionate sono:'
+            $data['config']['organizations'].each do |o|
+                puts o
+            end
+            puts
+            puts ' --- '
+            org = select
+        end
+
+        if $data['config']['organizations'].include? org
+            $data['config']['organizations'].delete(org)
+            json.update_json($data)
+            puts "#{org} rimossa con successo dall'elenco delle organizzazioni selezionate"
+        else
+            puts "L'elenco delle organizzazioni selezionate non include #{org}"
+        end
+    end
+
     def select
         list
-        print "Inserisci il nome o il numero corrispondente: "
+        print 'Inserisci il nome o il numero corrispondente: '
         choose = STDIN.gets.chomp.downcase
         if choose.to_i == 0
             org = choose

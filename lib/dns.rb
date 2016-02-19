@@ -7,13 +7,13 @@ class Dns
     end
 
     def list(org=nil) 
-        puts ""
-        puts "n   |   Org - DNS"
+        puts 
+        puts 'n   |   Org - DNS'
         count = 1
         @dns.each do |org, dns|
             first = true
             l=org.length
-            puts "-   |   ---------"
+            puts '-   |   ---------'
             dns.each do |d|
                 stringCount = "#{count}".ljust(4,' ')
                 if first
@@ -53,10 +53,10 @@ class Dns
         end
 
         oldname = select
-        print "Inserisci il nuovo nome (o lascia vuoto per non modificare): "
+        print 'Inserisci il nuovo nome (o lascia vuoto per non modificare): '
         name = STDIN.gets.chomp.downcase
         if (name.empty? || name == oldname)
-            puts "Il record non è stato cambiato"
+            puts 'Il record non è stato cambiato'
         else
             remove(org,oldname)
             add(org,name)
@@ -83,7 +83,7 @@ class Dns
 
     def select(org=nil)
         list(org)
-        print "Inserisci il numero corrispondente: "
+        print 'Inserisci il numero corrispondente: '
         choose = STDIN.gets.chomp.to_i
 
         actual = 0
