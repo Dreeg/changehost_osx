@@ -19,11 +19,12 @@ class TempHosts
             end
             puts "-   |   ---------------"
             hosts.each do |n,i|
+                stringCount = "#{count}".ljust(4,' ')
                 if first
-                    puts "#{count}   |   #{org} - #{n}#{' '*(lm-n.length)} - #{i}"
+                    puts "#{stringCount}|   #{org} - #{n}#{' '*(lm-n.length)} - #{i}"
                     first = false
                 else
-                    puts "#{count}  |   #{' '*(lo/2-1)}''#{' '*(lo/2-1)} - #{n}#{' '*(lm-n.length)} - #{i}"
+                    puts "#{stringCount}|   #{' '*(lo/2-1)}''#{' '*(lo/2-1)} - #{n}#{' '*(lm-n.length)} - #{i}"
                 end
                 count += 1
             end

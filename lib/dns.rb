@@ -15,11 +15,12 @@ class Dns
             l=org.length
             puts "-   |   ---------"
             dns.each do |d|
+                stringCount = "#{count}".ljust(4,' ')
                 if first
-                    puts "#{count}  |   #{org} - #{d}"
+                    puts "#{stringCount}|   #{org} - #{d}"
                     first = false
                 else
-                    puts "#{count}  |   #{' '*(l/2-1)}''#{' '*(l/2-1)} - #{d}"
+                    puts "#{stringCount}|   #{' '*(l/2-1)}''#{' '*(l/2-1)} - #{d}"
                 end
                 count += 1
             end
