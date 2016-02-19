@@ -157,7 +157,8 @@ def help
 	puts "'-a' o 'add' seguito da: 'dns', il nome dell'organizzazione e il nome del record DNS per aggiungerlo; 'hosts', il nome dell'organizzazione, il nome del record host e dall'indirizzo per aggiungere un record host temporaneo; 'org' e il nome dell'organizzazione per aggiungerne una;"
 	puts "'-m' o 'modify' seguito da 'dns', 'hosts' o 'org' per modificare un record presente."
 	puts "'-r' o 'remove' seguito da: 'dns', il nome dell'organizzazione e il nome per rimuovere un record dns; 'hosts', il nome dell'organizzazione e il nome per rimuovere un record host temporaneo; 'org' e il nome dell'organizzazione per rimuoverne una;"
-	puts "'-h' o 'help' o 'man' per visualizzare questa guida"
+	puts "'-d' o 'default' per decidere l'host di default per l'organizzazione"
+        puts "'-h' o 'help' o 'man' per visualizzare questa guida"
 end
 
 def check_files
