@@ -48,7 +48,16 @@ class Generator
 
         fh.close
 
-        write_file
+        puts " !! -- ATTENZIONE -- !!"
+        puts "Il file host in /private/etc/hosts e di conseguenza il file in /etc/hosts verrà SOVRASCRITTO senza possibilità di recupero"
+        puts
+        puts "Se il file è stato modificato manualmente, TALI MODIFICHE ANDRANNO IRRIMEDIABILMENTE PERSE"
+        puts
+        print 'Continuare? (y|n): '
+        choose = STDIN.gets.chomp
+        if choose == 'y'
+            write_file
+        end
     end
 
     def write_file
