@@ -75,6 +75,9 @@ def action(action=nil, field=nil, arg1=nil, arg2=nil, arg3=nil)
 		else
 			choose_act(action)
 		end
+        when 'default', '-d'
+		temp = TempHosts.new(arg1)
+		temp.select_default(arg1)
 	when 'generate', '-g'
 		gen = Generator.new
 	when 'man', 'help', '-h'
@@ -149,11 +152,11 @@ end
 
 def help
 	puts "Eseguire il programma con il parametro necessario:"
-	puts "'-l' o 'list' seguito da 'dns', 'hosts' o 'org' per ottenere l'elenco dei record dns, degli host o delle organizzazioni presenti in maniera temporanea"
-	puts "'-g' o 'generate' seguito da un nome host esistente, per generare un nuovo set di records"
-	puts "'-a' o 'add' seguito da: 'dns' e il nome per aggiungere un record dns; 'hosts' dal nome e dall'indirizzo per aggiungere un record host temporaneo; 'org' e il nome dell'organizzazione per aggiungerne una;"
-	puts "'-m' o 'modify' seguito da 'dns', 'hosts' o 'org' per modificare un record presente"
-	puts "'-r' o 'remove' seguito da: 'dns' e il nome per rimuovere un record dns; 'hosts' dal nome e dall'indirizzo per rimuovere un record host temporaneo; 'org' e il nome dell'organizzazione per rimuoverne una;"
+	puts "'-l' o 'list' seguito da 'dns', 'hosts' o 'org' per ottenere l'elenco dei record dns, degli host o delle organizzazioni presenti. Per i DNS e gli Host è possibile specificare immediatamente l'organizzazione voluta postponendone il nome esatto."
+	puts "'-g' o 'generate' per generare il file host in base alle impostazioni selezionate. ATTENZIONE. Sovrascrive il file host esistente senza possibilità di recupero."
+	puts "'-a' o 'add' seguito da: 'dns', il nome dell'organizzazione e il nome del record DNS per aggiungerlo; 'hosts', il nome dell'organizzazione, il nome del record host e dall'indirizzo per aggiungere un record host temporaneo; 'org' e il nome dell'organizzazione per aggiungerne una;"
+	puts "'-m' o 'modify' seguito da 'dns', 'hosts' o 'org' per modificare un record presente."
+	puts "'-r' o 'remove' seguito da: 'dns', il nome dell'organizzazione e il nome per rimuovere un record dns; 'hosts', il nome dell'organizzazione e il nome per rimuovere un record host temporaneo; 'org' e il nome dell'organizzazione per rimuoverne una;"
 	puts "'-h' o 'help' o 'man' per visualizzare questa guida"
 end
 
