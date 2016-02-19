@@ -19,15 +19,11 @@ class TempHosts
             end
             puts "-   |   ---------------"
             hosts.each do |n,i|
-                if count < 10
-                    if first
-                        puts "#{count}   |   #{org} - #{n}#{' '*(lm-n.length)} - #{i}"
-                        first = false
-                    else
-                        puts "#{count}   |   #{' '*(lo/2-1)}''#{' '*(lo/2-1)} - #{n}#{' '*(lm-n.length)} - #{i}"
-                    end
+                if first
+                    puts "#{count}   |   #{org} - #{n}#{' '*(lm-n.length)} - #{i}"
+                    first = false
                 else
-                    puts "#{count}  |   #{' '*(lo/2-1)}''#{' '*(lo/2-1)} - #{n}#{' '*(lm-n.length)} - #{i}"                        
+                    puts "#{count}  |   #{' '*(lo/2-1)}''#{' '*(lo/2-1)} - #{n}#{' '*(lm-n.length)} - #{i}"
                 end
                 count += 1
             end

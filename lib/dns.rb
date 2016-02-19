@@ -15,20 +15,11 @@ class Dns
             l=org.length
             puts "-   |   ---------"
             dns.each do |d|
-                if count < 10
-                    if first
-                        puts "#{count}   |   #{org} - #{d}"
-                        first = false
-                    else
-                        puts "#{count}   |   #{' '*(l/2-1)}''#{' '*(l/2-1)} - #{d}"
-                    end
+                if first
+                    puts "#{count}  |   #{org} - #{d}"
+                    first = false
                 else
-                    if first
-                        puts "#{count}  |   #{org} - #{d}"
-                        first = false
-                    else
-                        puts "#{count}  |   #{' '*(l/2-1)}''#{' '*(l/2-1)} - #{d}"                        
-                    end
+                    puts "#{count}  |   #{' '*(l/2-1)}''#{' '*(l/2-1)} - #{d}"
                 end
                 count += 1
             end
