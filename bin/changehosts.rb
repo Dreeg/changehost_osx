@@ -170,7 +170,7 @@ def help
 end
 
 def check_files
-	hash = {"config"=>{"organizations"=>["no_org"], "def_org"=>["no_org"]}, "organizations"=>{"no_org"=>{"hosts"=>{"localhost"=>"127.0.0.1"}, "dns"=>["localhost"]}}, "static"=>{"local"=>{"127.0.0.1"=>["localhost"], "255.255.255.255"=>["broadcasthost"], "::1"=>["localhost"]}}, "extra"=>{"header"=>["#", "# Host Database", "#", "# localhost is used to configure the loopback interface", "# when the system is booting.  Do not delete this entry.", "##"]}}
+	hash = {"config"=>{"organizations"=>["no_org"], "def_org"=>["no_org"]}, "organizations"=>{"no_org"=>{"hosts"=>{"localhost"=>"127.0.0.1"}, "dns"=>["localhost"]}}, "static"=>{"local"=>{"127.0.0.1"=>["localhost","localhost.localdomain"], "::1"=>["localhost","localhost.localdomain"], "255.255.255.255"=>["broadcasthost"]}}, "extra"=>{"header"=>["#", "# Host Database", "#", "# localhost is used to configure the loopback interface", "# when the system is booting.  Do not delete this entry.", "##"]}}
 	json = JSON.pretty_generate(hash)
 
 	unless Dir.exist?("../data/")
