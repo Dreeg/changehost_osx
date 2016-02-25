@@ -24,8 +24,9 @@ class Generator
         fh.puts
 
         #static
+        fh.puts("## STATIC HOSTS ##")
         $data['static'].each do |title,static|
-            fh.puts("## #{title} ##")
+            fh.puts("  # #{title} #")
             static.each do |ip, name|
                 fh.puts("  #{ip} #{name.join(' ')}")
             end
