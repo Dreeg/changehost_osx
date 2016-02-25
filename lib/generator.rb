@@ -28,7 +28,7 @@ class Generator
         $data['static'].each do |title,static|
             fh.puts("  # #{title} #")
             static.each do |ip, name|
-                fh.puts("  #{ip} #{name.join(' ')}")
+                fh.puts("    #{ip} #{name.join(' ')}")
             end
         end
         fh.puts
